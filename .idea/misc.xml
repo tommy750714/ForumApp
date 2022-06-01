@@ -25,10 +25,12 @@
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.4485280354817709" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25181159420289856" />
+        <entry key="app/src/main/res/layout/activity_navigate_bar.xml" value="0.35190217391304346" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.275" />
         <entry key="app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.15520833333333334" />
       </map>

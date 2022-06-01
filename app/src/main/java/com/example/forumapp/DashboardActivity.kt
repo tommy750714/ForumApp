@@ -6,11 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.forumapp.Fragments.HomeFragment
-import com.example.forumapp.Fragments.MapsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class DashboardActivity : AppCompatActivity() {
@@ -20,7 +16,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var emailText : TextView
     private lateinit var profileImage : ImageView
     private lateinit var signOutButton: Button
-    private lateinit var bottomNav : BottomNavigationView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         emailText = findViewById(R.id.email_txt)
         profileImage = findViewById(R.id.profile_image)
         signOutButton = findViewById(R.id.sign_out_btn)
-        bottomNav = findViewById(R.id.bottomNav)
+
 
 
         idText.text = currentUser?.uid
@@ -47,26 +43,8 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        bottomNav.setOnNavigationItemReselectedListener{ item ->
-            when(item.itemId) {
-                R.id.nav_home -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
-                R.id.nav_map -> {
-                    loadFragment(MapsFragment())
-                    true
-                }
-                else -> false
-            }
-        }
+
     }
 
-    private fun loadFragment(fragment: Fragment){
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.bottomNav,fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
 
 }

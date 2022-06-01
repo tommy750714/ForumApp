@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
          * Else send him to DashboardActivity*/
         Handler().postDelayed({
             if(user != null){
-                val dashboardIntent = Intent(this, DashboardActivity::class.java)
-                val addPostIntent = Intent(this, AddPostActivity::class.java)
-                startActivity(addPostIntent)
+                val navIntent = Intent(this, NavigateViewActivity::class.java)
+           //    val addPostIntent = Intent(this, AddPostActivity::class.java)
+                startActivity(navIntent)
                 finish()
             }else{
                 val signInIntent = Intent(this, SignInActivity::class.java)

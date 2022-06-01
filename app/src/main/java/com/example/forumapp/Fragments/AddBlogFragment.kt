@@ -8,17 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.forumapp.R
 
-class HomeFragment : Fragment() {
+class AddBlogFragment : Fragment() {
 
     companion object {
-        fun newInstance() = HomeFragment ()
+        fun newInstance() = AddBlogFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_add_blog, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
