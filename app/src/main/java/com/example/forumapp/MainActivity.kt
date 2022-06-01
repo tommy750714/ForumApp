@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             if(user != null){
                 val dashboardIntent = Intent(this, DashboardActivity::class.java)
-                startActivity(dashboardIntent)
+                val addPostIntent = Intent(this, AddPostActivity::class.java)
+                startActivity(addPostIntent)
                 finish()
             }else{
                 val signInIntent = Intent(this, SignInActivity::class.java)

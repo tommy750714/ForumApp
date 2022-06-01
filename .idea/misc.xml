@@ -4,15 +4,32 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable-v24/outline_close_24.xml" value="0.2125" />
+        <entry key="app/src/main/res/drawable-v24/outline_done_24.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable-v24/outline_image_24.xml" value="0.284" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/ic_chat.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/ic_flight.xml" value="0.2395" />
+        <entry key="app/src/main/res/drawable/ic_google.xml" value="0.1925" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1925" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1925" />
+        <entry key="app/src/main/res/drawable/ic_map.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.2865" />
         <entry key="app/src/main/res/drawable/ic_signin_background.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/ic_welcome.xml" value="0.1635" />
         <entry key="app/src/main/res/drawable/nav_menu.xml" value="0.1645" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.21421407063802084" />
+        <entry key="app/src/main/res/drawable/outline_edit_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/outline_image_24.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_blog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.6226950354609929" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.4485280354817709" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25181159420289856" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/menu/menu_nav.xml" value="0.1" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.15520833333333334" />
       </map>
     </option>
