@@ -12,9 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForumApp">
         <activity
-            android:name=".NavigateViewActivity"
-            android:exported="false"
-            android:label="@string/title_activity_navigate_bar" />
+            android:name=".MainActivity"
+            android:exported="true"/>
         <activity
             android:name=".AddPostActivity"
             android:exported="false" />
@@ -37,11 +36,11 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SplashScreenActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

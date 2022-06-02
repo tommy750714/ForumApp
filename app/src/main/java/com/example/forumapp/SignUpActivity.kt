@@ -13,7 +13,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class SignInActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     companion object {
         private const val RC_SIGN_IN = 120
@@ -24,7 +24,7 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_sign_up)
 
 
 
@@ -38,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
         // Firebase Auth instance
         mAuth = FirebaseAuth.getInstance()
 
-        var sign_in_btn = findViewById<Button>(R.id.sign_in_btn)
+        val sign_in_btn = findViewById<Button>(R.id.sign_in_google_btn)
         sign_in_btn.setOnClickListener {
             signIn()
         }

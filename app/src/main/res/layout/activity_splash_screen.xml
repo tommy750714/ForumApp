@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreenActivity"
+    android:id="@+id/splashscreen">
+
+    <ImageView
+        android:id="@+id/iconIv"
+        android:layout_width="179dp"
+        android:layout_height="165dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/app_logo" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="98dp"
+        android:layout_below="@+id/iconIv"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="117dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="219dp"
+        android:layout_marginBottom="-1dp"
+        android:letterSpacing="0.09"
+        android:text="Author: Cheng Ka Yeung 217010632 "
+        android:textAllCaps="true"
+        android:textColor="#212121"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

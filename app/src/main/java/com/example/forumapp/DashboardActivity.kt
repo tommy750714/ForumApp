@@ -39,7 +39,7 @@ class DashboardActivity : AppCompatActivity() {
         Glide.with(this).load(currentUser?.photoUrl).into(profileImage)
         signOutButton.setOnClickListener {
             mAuth.signOut()
-            val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()
         }

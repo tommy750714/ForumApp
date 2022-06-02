@@ -14,7 +14,7 @@
         android:id="@+id/nav_add"
         android:enabled="true"
         android:icon="@drawable/ic_add"
-        android:title="Add Blog"/>
+        android:title="Add Post" />
     <item
         android:id="@+id/nav_chat"
         android:enabled="true"
