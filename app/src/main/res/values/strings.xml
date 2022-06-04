@@ -18,4 +18,5 @@
     <string name="title_chat">Notifications</string>
     <string name="title_map">Map</string>
     <string name="title_add_blog">AddBlog</string>
+    <string name="developed_by">Developed By: Cheng Ka Yeung 217010632 </string>
 </resources>

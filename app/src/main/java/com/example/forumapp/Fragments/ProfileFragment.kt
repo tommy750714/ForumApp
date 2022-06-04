@@ -6,14 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.forumapp.DashboardActivity
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.forumapp.R
+import com.example.forumapp.SignUpActivity
+import com.google.firebase.auth.FirebaseAuth
+
 
 class ProfileFragment : Fragment() {
 
     companion object {
         fun newInstance() = ProfileFragment ()
     }
+
+    private lateinit var mAuth: FirebaseAuth
+    private var idText : TextView?= null
+    private var nameText : TextView?= null
+    private var emailText : TextView?= null
+    lateinit var profileImage : ImageView
+    private var signOutButton:  Button?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,9 +37,30 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
-
+        getUserInfo()
     }
 
+    private fun getUserInfo(){
+
+        idText = requireView().findViewById(R.id.id_txt)
+        nameText = requireView().findViewById(R.id.name_txt)
+        emailText = requireView().findViewById(R.id.email_txt)
+        profileImage = requireView().findViewById(R.id.profile_image)
+        signOutButton = requireView().findViewById(R.id.sign_out_btn)
+
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+
+        idText!!.text = currentUser?.uid
+        nameText!!.text = currentUser?.displayName
+        emailText!!.text = currentUser?.email
+        Glide.with(this).load(currentUser?.photoUrl).into(profileImage)
+
+        signOutButton!!.setOnClickListener {
+            mAuth.signOut()
+            val intent = Intent(activity, SignUpActivity::class.java)
+            this.startActivity(intent)
+        }
+
+    }
 }

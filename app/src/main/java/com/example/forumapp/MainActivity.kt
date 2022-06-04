@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         executor = ContextCompat.getMainExecutor(this)
 
         // Manage a system-provided biometric prompt
-        biometricPrompt = BiometricPrompt(this, executor,
+        /* biometricPrompt = BiometricPrompt(this, executor,
           object : BiometricPrompt.AuthenticationCallback() {
 
               override fun onAuthenticationError(errorCode: Int,
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
           .setTitle("Biometric login for my app")
           .setSubtitle("Log in using your biometric credential")
           .setNegativeButtonText("Use account password")
-          .build()
+          .build()*/
 
       /**If user is not authenticated, send him to SignInActivity to authenticate first.
          * Else send him to ProfileFragment*/
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             if(user != null){
             //   val navIntent = Intent(this, NavigateViewActivity::class.java)
             //   val addPostIntent = Intent(this, AddPostActivity::class.java)
-                biometricPrompt.authenticate(promptInfo)
+//                biometricPrompt.authenticate(promptInfo)
 
                 loadFragment(ProfileFragment())
             }else{
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        biometricPrompt.authenticate(promptInfo)
+        // biometricPrompt.authenticate(promptInfo)
     }
     private fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
