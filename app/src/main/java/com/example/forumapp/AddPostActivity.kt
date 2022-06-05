@@ -40,7 +40,7 @@ class AddPostActivity : AppCompatActivity() {
 
 
         cancelPostImageButton.setOnClickListener {
-            val intent=Intent(this@AddPostActivity,DashboardActivity::class.java)
+            val intent=Intent(this@AddPostActivity,MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
@@ -52,7 +52,7 @@ class AddPostActivity : AppCompatActivity() {
 
         postImageButton.setOnClickListener{
             postImage()
-            val intent=Intent(this@AddPostActivity,DashboardActivity::class.java)
+            val intent=Intent(this@AddPostActivity,MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()

@@ -22,11 +22,11 @@ class ProfileFragment : Fragment() {
     }
 
     private lateinit var mAuth: FirebaseAuth
-    private var idText : TextView?= null
-    private var nameText : TextView?= null
-    private var emailText : TextView?= null
+    lateinit var idText : TextView
+    lateinit var nameText : TextView
+    lateinit var emailText : TextView
     lateinit var profileImage : ImageView
-    private var signOutButton:  Button?= null
+    lateinit var signOutButton:  Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +51,12 @@ class ProfileFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
 
-        idText!!.text = currentUser?.uid
-        nameText!!.text = currentUser?.displayName
-        emailText!!.text = currentUser?.email
+        idText.text = currentUser?.uid
+        nameText.text = currentUser?.displayName
+        emailText.text = currentUser?.email
         Glide.with(this).load(currentUser?.photoUrl).into(profileImage)
 
-        signOutButton!!.setOnClickListener {
+        signOutButton.setOnClickListener {
             mAuth.signOut()
             val intent = Intent(activity, SignUpActivity::class.java)
             this.startActivity(intent)
