@@ -37,7 +37,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         return rootView
     }
 
-    override fun onMapReady(googleMap: GoogleMap?) {
+    override fun onMapReady(googleMap: GoogleMap) {
+
         mMap = googleMap!!
 
         // Add a marker in Sydney and move the camera
@@ -45,5 +46,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(petHospital).title("Pet Hospital"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(petHospital))
     }
+
 
 }

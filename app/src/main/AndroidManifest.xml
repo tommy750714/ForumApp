@@ -14,10 +14,10 @@
         android:theme="@style/Theme.ForumApp">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.forumapp.MainActivity"
             android:exported="true"/>
         <activity
-            android:name=".AddPostActivity"
+            android:name="com.example.forumapp.AddPostActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -36,13 +36,13 @@
             android:value="${MAPS_API_KEY}"/>
 
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.example.forumapp.DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.example.forumapp.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.example.forumapp.SplashScreenActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
