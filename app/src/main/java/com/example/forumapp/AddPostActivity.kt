@@ -72,10 +72,8 @@ class AddPostActivity : AppCompatActivity() {
                     CAMERA_IMAGE_REQUEST
                 )
             } catch (e:ActivityNotFoundException) {
-
                 Toast.makeText(this, "Can not open camera", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         postImageButton.setOnClickListener{
@@ -84,7 +82,6 @@ class AddPostActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
-
         }
 
     }
