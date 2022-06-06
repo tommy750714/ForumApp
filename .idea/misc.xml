@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/drawable/outline_edit_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/outline_image_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_blog.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.6226950354609929" />
+        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.55" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.4485280354817709" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/activity_main(backup).xml" value="0.13177083333333334" />

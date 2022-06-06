@@ -1,21 +1,33 @@
 package com.example.forumapp
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.icu.text.CaseMap
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.net.URI
 import java.util.*
+import java.util.jar.Manifest
 
 
 class AddPostActivity : AppCompatActivity() {
 
-    private val PICK_IMAGE_REQUEST = 71
+    private val PICK_IMAGE_REQUEST = 300
+    private val CAMERA_IMAGE_REQUEST = 400
     private var filePath: Uri? = null
     private var firebaseStorage : FirebaseStorage? = null
     private var storageRef : StorageReference? = null
@@ -23,6 +35,7 @@ class AddPostActivity : AppCompatActivity() {
     private lateinit var browseImageButton: Button
     private lateinit var  postImageButton: Button
     private lateinit var cancelPostImageButton: Button
+    private lateinit var cameraImageButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +46,7 @@ class AddPostActivity : AppCompatActivity() {
         browseImageButton = findViewById(R.id.browse_image_btn)
         postImageButton = findViewById(R.id.post_image_btn)
         cancelPostImageButton = findViewById(R.id.cancel_post_image_btn)
+        cameraImageButton = findViewById(R.id.camera_image_btn)
 
         firebaseStorage = FirebaseStorage.getInstance()
         storageRef = FirebaseStorage.getInstance().reference
@@ -50,6 +64,20 @@ class AddPostActivity : AppCompatActivity() {
             browseImage()
         }
 
+        cameraImageButton.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            try {
+                startActivityForResult(
+                    intent,
+                    CAMERA_IMAGE_REQUEST
+                )
+            } catch (e:ActivityNotFoundException) {
+
+                Toast.makeText(this, "Can not open camera", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
         postImageButton.setOnClickListener{
             postImage()
             val intent=Intent(this@AddPostActivity,MainActivity::class.java)
@@ -58,7 +86,6 @@ class AddPostActivity : AppCompatActivity() {
             finish()
 
         }
-
 
     }
 
@@ -71,18 +98,32 @@ class AddPostActivity : AppCompatActivity() {
 
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK){
-            if(data == null || data.data == null) {
-                return
-            }
-            filePath = data.data
-            try {
-                val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
-                imagePreview.setImageBitmap(bitmap)
-            } catch (e:IOException){
-                e.printStackTrace()
+        if (resultCode == Activity.RESULT_OK) {
+            when(requestCode){
+                PICK_IMAGE_REQUEST -> {
+                    if (data == null || data.data == null) {
+                        return
+                    }
+                    filePath = data.data
+                    try {
+                        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
+                        imagePreview.setImageBitmap(bitmap)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
+                CAMERA_IMAGE_REQUEST -> {
+                    try {
+                        val bitmap = (data!!.extras!!.get("data") as Bitmap)
+                        imagePreview.setImageBitmap(bitmap)
+                        filePath = getImageUri(applicationContext, bitmap)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
             }
         }
     }
@@ -95,6 +136,19 @@ class AddPostActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this,"Please Upload an Picture", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG,100, bytes)
+        val filePath = MediaStore.Images.Media.insertImage(
+            inContext.contentResolver,
+            inImage,
+            "Title",
+            null
+        )
+
+        return Uri.parse(filePath)
     }
 
 }

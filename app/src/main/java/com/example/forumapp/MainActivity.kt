@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     //Biometric Auth
-    private lateinit var executor: Executor
+    /* private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
-    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo*/
 
 
     // Bottom Navigation Bar Pointer
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val user = mAuth.currentUser
 
         // For creating a thread and run a long-running task.
-        executor = ContextCompat.getMainExecutor(this)
+        // executor = ContextCompat.getMainExecutor(this)
 
         // Manage a system-provided biometric prompt
         /* biometricPrompt = BiometricPrompt(this, executor,
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
             if(user != null){
             //   val navIntent = Intent(this, NavigateViewActivity::class.java)
             //   val addPostIntent = Intent(this, AddPostActivity::class.java)
-//                biometricPrompt.authenticate(promptInfo)
+            //   biometricPrompt.authenticate(promptInfo)
 
                 loadFragment(ProfileFragment())
             }else{
@@ -120,10 +120,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        // biometricPrompt.authenticate(promptInfo)
-    }
     private fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container,fragment)

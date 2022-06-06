@@ -87,6 +87,13 @@
             android:icon="@drawable/ic_add_image"
             android:text="Browse" />
 
+        <Button
+            android:id="@+id/camera_image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_add_image"
+            android:text="Camera" />
+
     </LinearLayout>
 
 
