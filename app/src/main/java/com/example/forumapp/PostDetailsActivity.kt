@@ -55,7 +55,6 @@ class PostDetailsActivity : AppCompatActivity() {
 
         loadPostInfo()
 
-    //    sendb.setOnClickListener { postComment()}
         delbtn.setOnClickListener{
             deletePost(ptime, uimage!!)
             finish()
@@ -184,8 +183,4 @@ class PostDetailsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
-    }
 }

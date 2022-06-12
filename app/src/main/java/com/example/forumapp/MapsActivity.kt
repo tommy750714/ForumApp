@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -17,8 +18,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private var currentLocation : Location?= null
-    private var locationProvider: FusedLocationProviderClient?= null
+    var currentLocation : Location?= null
+    var locationProvider: FusedLocationProviderClient?= null
+    private lateinit var gMap : GoogleMap
+    lateinit var backbtn: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +29,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_maps)
 
         locationProvider = LocationServices.getFusedLocationProviderClient(this@MapsActivity)
-
         getLocation()
+
+        backbtn = findViewById(R.id.back_btn)
+        backbtn.setOnClickListener{
+            finish()
+        }
 
     }
 
@@ -36,9 +43,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if (ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)
             != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 500)
         }
-
         val task = locationProvider!!.lastLocation
         task.addOnSuccessListener { location ->
             if (location != null){
@@ -50,6 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        gMap = googleMap
         val latLng = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
         val markerOptions = MarkerOptions().position(latLng).title("I Am Here!")
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
@@ -60,7 +67,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when(requestCode){
             requestCode -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     getLocation()
                 }
             }
@@ -68,8 +75,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
-    }
+
 }

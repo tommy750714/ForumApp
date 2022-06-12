@@ -3,11 +3,9 @@ package com.example.forumapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import com.example.forumapp.Fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_chat -> {
-                loadFragment(ChatFragment())
+                loadFragment(EventFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_dashboard -> {
@@ -34,8 +32,9 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_map -> {
-                val mapIntent = Intent(this, MapsActivity::class.java)
-                startActivity(mapIntent)
+            //    val mapIntent = Intent(this, MapsActivity::class.java)
+            //    startActivity(mapIntent)
+                loadFragment(MapsFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
