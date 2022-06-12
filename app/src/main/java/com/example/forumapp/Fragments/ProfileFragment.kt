@@ -10,9 +10,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.forumapp.LoginActivity
 import com.example.forumapp.R
-import com.example.forumapp.SignUpActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class ProfileFragment : Fragment() {
@@ -27,6 +29,7 @@ class ProfileFragment : Fragment() {
     lateinit var emailText : TextView
     lateinit var profileImage : ImageView
     lateinit var signOutButton:  Button
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +61,7 @@ class ProfileFragment : Fragment() {
 
         signOutButton.setOnClickListener {
             mAuth.signOut()
-            val intent = Intent(activity, SignUpActivity::class.java)
+            val intent = Intent(activity, LoginActivity::class.java)
             this.startActivity(intent)
         }
 
