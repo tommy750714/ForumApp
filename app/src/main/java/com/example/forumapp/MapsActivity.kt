@@ -2,6 +2,8 @@ package com.example.forumapp
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,13 +17,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.io.IOException
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    var currentLocation : Location?= null
-    var locationProvider: FusedLocationProviderClient?= null
+    private var currentLocation : Location?= null
+    private var locationProvider: FusedLocationProviderClient?= null
     private lateinit var gMap : GoogleMap
-    lateinit var backbtn: Button
+    private lateinit var backbtn: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +32,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_maps)
 
         locationProvider = LocationServices.getFusedLocationProviderClient(this@MapsActivity)
+
         getLocation()
 
         backbtn = findViewById(R.id.back_btn)
@@ -40,15 +44,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private fun getLocation() {
+
         if (ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)
             != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 500)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
         }
         val task = locationProvider!!.lastLocation
+
         task.addOnSuccessListener { location ->
             if (location != null){
                 currentLocation = location
+
                 val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
                 supportMapFragment!!.getMapAsync(this@MapsActivity)
             }
@@ -64,16 +71,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.addMarker(markerOptions)
     }
 
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when(requestCode){
             requestCode -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     getLocation()
                 }
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-
 
 }

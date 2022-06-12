@@ -26,15 +26,13 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_add -> {
-            //    val addPostIntent = Intent(this, AddPostActivity::class.java)
-            //    startActivity(addPostIntent)
                 loadFragment(AddPostFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_map -> {
-            //    val mapIntent = Intent(this, MapsActivity::class.java)
-            //    startActivity(mapIntent)
-                loadFragment(MapsFragment())
+                val mapIntent = Intent(this, MapsActivity::class.java)
+                startActivity(mapIntent)
+
                 return@OnNavigationItemSelectedListener true
             }
         }

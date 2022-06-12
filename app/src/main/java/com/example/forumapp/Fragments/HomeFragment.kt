@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
 
     var firebaseAuth: FirebaseAuth?= null
     var recyclerView: RecyclerView?= null
-    var posts: MutableList<PostModel>? = null
+    lateinit var posts: MutableList<PostModel>
     var adapterPosts: PostAdaptor?= null
 
     override fun onCreateView(
@@ -52,11 +52,11 @@ class HomeFragment : Fragment() {
         val databaseReference = FirebaseDatabase.getInstance().getReference("Posts")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                posts!!.clear()
+                posts.clear()
                 for (dataSnapshot1 in dataSnapshot.children) {
                     val modelPost: PostModel? = dataSnapshot1.getValue(PostModel::class.java)
-                    posts!!.add(modelPost!!)
-                    adapterPosts = PostAdaptor(activity!!, posts!!)
+                    posts.add(modelPost!!)
+                    adapterPosts = PostAdaptor(activity!!, posts)
                     recyclerView!!.adapter = adapterPosts
                 }
             }
